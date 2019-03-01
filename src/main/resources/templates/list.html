@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <title>Welcome to your Duty List</title>
+
+    <style>
+        body { padding-bottom: 70px;}
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+
+<body>
+
+<a href="/add">Add New Duty</a>
+
+<table>
+
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Priority</th>
+        <th>Is it Complete ?</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr th:each="duty : ${duties}">
+        <td th:text="${duty.name}"></td>
+        <td th:text="${duty.description}"></td>
+        <td th:text="${duty.date}"></td>
+        <td th:text="${duty.priority}"></td>
+        <td th:text="${duty.complete}"></td>
+
+        <td>
+
+            <a th:href="@{/update/{id}(id=${duty.id})}">Update</a>
+            <a th:href="@{/detail/{id}(id=${duty.id})}">Details</a>
+            <a th:href="@{/delete/{id}(id=${duty.id})}">Delete</a>
+        </td></tr>
+
+</table>
+</body>
+</html>
